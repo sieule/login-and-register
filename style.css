@@ -221,3 +221,83 @@ button:hover{
     font-size: 24px;
     cursor: pointer;
 }
+
+/* ===== Bộ chọn ngôn ngữ ===== */
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.lang-switcher select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.lang-switcher select:hover,
+.lang-switcher select:focus {
+    border-color: darkblue;
+    box-shadow: 0 0 0 3px rgba(0, 0, 139, 0.15);
+}
+
+/* ===== Nút quay về trang chủ ===== */
+.home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: #000;
+    font-family: inherit;
+    font-size: 0.95rem;
+    text-decoration: none;
+    /* override transition: .6s của * cho mượt hơn */
+    transition: border-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.home-btn:hover {
+    border-color: darkblue;
+    box-shadow: 0 0 0 3px rgba(0, 0, 139, 0.15);
+    color: darkblue;
+}
+
+/* Mobile: thu gọn cả 2 nút góc trên */
+@media (max-width: 500px) {
+    .home-btn {
+        top: 12px;
+        left: 12px;
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+    .lang-switcher {
+        top: 12px;
+        right: 12px;
+    }
+    .lang-switcher select {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Rất nhỏ: chỉ hiện icon */
+@media (max-width: 380px) {
+    .home-btn span {
+        display: none;
+    }
+}
