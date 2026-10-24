@@ -7,60 +7,84 @@
     <title>Đăng nhập hoặc đăng ký</title>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <script src="source.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Nút quay về trang chủ -->
+    <a href="/" class="home-btn" aria-label="Back to home">
+        <i class="bi bi-arrow-left"></i>
+        <span data-i18n="back_home">Về trang chủ</span>
+    </a>
+    
+    <!-- Bộ chọn ngôn ngữ -->
+    <div class="lang-switcher">
+        <select id="langSelect" aria-label="Chọn ngôn ngữ">
+            <option value="vi">🇻🇳 Tiếng Việt</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="ja">🇯🇵 日本語</option>
+        </select>
+    </div>
+
     <div class="container">
         <div class="box hopdangnhap">
             <div class="details dtdangnhap">
-                <h2>Đăng nhập</h2>
+                <h2 data-i18n="login_title">Đăng nhập</h2>
                 <div class="box-wrapper">
-                    <label for="username">Tên đăng nhập</label>
-                    <input type="text" id="usernamedn" placeholder="Tên đăng nhập" required>
+                    <label for="usernamedn" data-i18n="username">Tên đăng nhập</label>
+                    <input type="text" id="usernamedn" data-i18n-placeholder="username" placeholder="Tên đăng nhập" required>
                 </div>
                 <div class="box-wrapper">
-                    <label for="password">Mật khẩu</label>
+                    <label for="passworddn" data-i18n="password">Mật khẩu</label>
                     <span toggle="#passworddn" class="field-icon"><i class="bi bi-eye-fill"></i></span>
-                    <input type="password" id="passworddn" placeholder="Mật khẩu" required>
+                    <input type="password" id="passworddn" data-i18n-placeholder="password" placeholder="Mật khẩu" required>
                 </div>
                 <table border="0" width="100%">
                     <tr>
-                    <td width="6%"><input id="remember" class="remember" type="checkbox"></td>
-                    <td width="50%">Ghi nhớ đăng nhập</td>
-                    <td width="44%" style="text-align: right;"><a href="#">Quên mật khẩu?</a></td>
+                        <td width="6%"><input id="remember" class="remember" type="checkbox"></td>
+                        <td width="50%" data-i18n="remember_me">Ghi nhớ đăng nhập</td>
+                        <td width="44%" style="text-align: right;">
+                            <a href="#" data-i18n="forgot_password">Quên mật khẩu?</a>
+                        </td>
                     </tr>
                 </table>
-                <button id="login">Đăng nhập</button>
-                <p>Chưa có tài khoản? <a href="#" id="nhayphai">Đăng ký</a></p>
+                <button id="login" data-i18n="login_btn">Đăng nhập</button>
+                <p>
+                    <span data-i18n="no_account">Chưa có tài khoản?</span>
+                    <a href="#" id="nhayphai" data-i18n="register_link">Đăng ký</a>
+                </p>
             </div>
-        
-        <div class="hopdangky">
-            <div class="details dtdangky">
-                <h2>Đăng ký</h2>
-                <div class="box-wrapper">
-                    <label for="username">Tên đăng nhập</label>
-                    <input type="text" id="usernamedk" placeholder="Tên đăng nhập" required>
+
+            <div class="hopdangky">
+                <div class="details dtdangky">
+                    <h2 data-i18n="register_title">Đăng ký</h2>
+                    <div class="box-wrapper">
+                        <label for="usernamedk" data-i18n="username">Tên đăng nhập</label>
+                        <input type="text" id="usernamedk" data-i18n-placeholder="username" placeholder="Tên đăng nhập" required>
+                    </div>
+                    <div class="box-wrapper">
+                        <label for="passworddk" data-i18n="password">Mật khẩu</label>
+                        <span toggle="#passworddk" class="field-icon"><i class="bi bi-eye-fill"></i></span>
+                        <input type="password" id="passworddk" data-i18n-placeholder="password" placeholder="Mật khẩu" required>
+                    </div>
+                    <div class="box-wrapper">
+                        <label for="emaildk" data-i18n="email">Địa chỉ email</label>
+                        <input type="email" id="emaildk" data-i18n-placeholder="email" placeholder="Địa chỉ email" required>
+                    </div>
+                    <button id="register" data-i18n="register_btn">Đăng ký</button>
+                    <p>
+                        <span data-i18n="have_account">Đã có tài khoản?</span>
+                        <a href="#" id="nhaytrai" data-i18n="login_link">Đăng nhập</a>
+                    </p>
                 </div>
-                <div class="box-wrapper">
-                    <label for="password">Mật khẩu</label>
-                    <span toggle="#passworddk" class="field-icon"><i class="bi bi-eye-fill"></i></span>
-                    <input type="password" id="passworddk" placeholder="Mật khẩu" required>
-                </div>
-                <div class="box-wrapper">
-                    <label for="email">Địa chỉ email</label>
-                    <input type="email" id="emaildk" placeholder="Địa chỉ email" required>
-                </div>
-                <button id="register">Đăng ký</button>
-                <p>Đã có tài khoản? <a href="#" id="nhaytrai">Đăng nhập</a></p>
             </div>
         </div>
     </div>
+
     <div id="register-error-popup" class="popup">
         <div class="popup-content">
             <span id="closePopupBtn" class="close-btn">&times;</span>
             <div class="popup-message">
-                <!-- Icon FontAwesome -->
-                <i class="bi bi-send-x"></i>
+                <i class="bi bi-exclamation-triangle-fill error-icon"></i>
                 <p id="register-error-message" style="color: red;"></p>
             </div>
         </div>
